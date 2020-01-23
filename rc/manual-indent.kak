@@ -7,7 +7,7 @@ provide-module manual-indent %{
   define-command manual-indent-disable -docstring 'Disable manual-indent' %{
     remove-hooks window manual-indent
   }
-  # By convention, filetype hooks are added to the window scope under:
+  # By convention, filetype hooks are added to the window scope under the following names:
   # – {filetype}
   # – {filetype}-{something}
   define-command manual-indent-remove-filetype-hooks -docstring 'Remove filetype hooks' %{
