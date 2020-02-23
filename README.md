@@ -4,9 +4,9 @@ Manual indenting for [Kakoune].
 
 ## Features
 
-- <kbd>Return</kbd>: Copy previous line indent.
-- <kbd>Tab</kbd>: Indent at line start.
-- <kbd>Backspace</kbd>: Deindent at line start.
+- <kbd>Return</kbd> ⇒ Copy previous line indent.
+- <kbd>Tab</kbd> ⇒ Indent at line start.
+- <kbd>Backspace</kbd> ⇒ Deindent at line start.
 
 ## Installation
 
