@@ -20,6 +20,7 @@ provide-module manual-indent %{
     remove-hooks window 'manual-indent|manual-indent-.+'
   }
   define-command manual-indent-spaces -docstring 'Indent with spaces' %{
+    remove-hooks window manual-indent-spaces
     hook -group manual-indent-spaces window InsertChar '\t' manual-indent-tab-inserted
     hook -group manual-indent-spaces window InsertDelete ' ' manual-indent-space-deleted
   }
