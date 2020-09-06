@@ -12,6 +12,10 @@ Manual indenting for [Kakoune].
 
 Add [`manual-indent.kak`](rc/manual-indent.kak) to your autoload or source it manually.
 
+``` kak
+require-module manual-indent
+```
+
 ## Usage
 
 Enable manual indenting with `manual-indent-enable`.

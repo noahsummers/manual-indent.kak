@@ -61,5 +61,3 @@ provide-module manual-indent %{
     }
   }
 }
-
-require-module manual-indent
