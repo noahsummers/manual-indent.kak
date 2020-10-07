@@ -25,10 +25,12 @@ You can also disable and restore filetype hooks with `manual-indent-remove-filet
 ## Configuration
 
 ``` kak
+# Manual indent
 hook global WinCreate .* %{
   manual-indent-enable
 }
 
+# Remove filetype hooks
 hook global WinSetOption filetype=.* %{
   manual-indent-remove-filetype-hooks
 }
