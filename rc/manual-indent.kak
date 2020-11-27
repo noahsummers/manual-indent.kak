@@ -33,7 +33,7 @@ provide-module manual-indent %{
   define-command manual-indent-spaces -docstring 'Indent with spaces' %{
     remove-hooks window manual-indent-spaces
 
-    hook -group manual-indent-spaces window InsertChar '\t' manual-indent-tab-inserted
+    map window insert <tab> '<a-;>: insert-soft-tab<ret>'
     hook -group manual-indent-spaces window InsertDelete ' ' manual-indent-space-deleted
   }
 
@@ -89,4 +89,15 @@ provide-module manual-indent %{
       execute-keys -draft 'h<a-h><a-k>\A\h+\z<ret>i<space><esc><lt>'
     }
   }
+
+  # Insert soft tab (only at start of line or if preceded only by whitespace)
+  define-command -hidden insert-soft-tab %{
+    # <a-h><a-K>\S{2}<ret>  # expand selections leftward, then reject selections containing consecutive non-whitespace characters
+    # s(?S)^.*(?=.)|^$<ret> # remove last character (original cursor location) from each selection longer than one character
+    # <a-k>^(|.|\h+)\z<ret> # keep single-character selections (cursor at start of line or newline) and whitespace-only selections
+    # ;i<space><esc>h""sd   # insert one space, then delete-yank that space to 's' register
+    # %opt{indentwidth}""sP # paste 's' register 'indentwidth times' after cursor
+    try %{ execute-keys -draft "<a-h><a-K>\S{2}<ret>s(?S)^.*(?=.)|^$<ret><a-k>^(|.|\h+)\z<ret>;i<space><esc>h""sd%opt{indentwidth}""sP" }
+  }
+
 }
